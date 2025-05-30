@@ -1,11 +1,17 @@
-import 'package:api_products/HomePage.dart';
-import 'package:api_products/api_service.dart';
+import 'package:api_products/views/HomePage.dart';
+import 'package:api_products/Services/api_service.dart';
 import 'package:api_products/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'views/SplashScreen.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: SplashScreen(),
+  ));
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,9 +24,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login App',
+      title: 'Product Hub',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.deepPurple[50], // 🌈 Set your background color here
+        primarySwatch: Colors.deepPurple,
+        textTheme: ThemeData.dark().textTheme,
+      ),
       home: FutureBuilder<bool>(
         future: isLoggedIn(),
         builder: (context, snapshot) {

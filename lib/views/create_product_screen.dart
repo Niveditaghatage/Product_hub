@@ -1,4 +1,4 @@
-import 'package:api_products/ProductListPage.dart';
+import 'package:api_products/views/ProductListPage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -56,8 +56,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> with SingleTi
                 scale: 1.0,
                 duration: const Duration(milliseconds: 300),
                 child: AlertDialog(
-                  title: const Text("🎉 Product Created"),
-                  content: Text("ID: ${newProduct['id']}\nTitle: ${newProduct['title']}"),
+                  title: const Text("🎉 Product Created" ,style: const TextStyle(color: Colors.black87),),
+                  content: Text("ID: ${newProduct['id']}\nTitle: ${newProduct['title']}",style: const TextStyle(color: Colors.black87),),
                   actions: [
                     TextButton(
                       onPressed: () {

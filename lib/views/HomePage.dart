@@ -1,12 +1,13 @@
 import 'dart:convert';
-import 'package:api_products/ProductDetailScreen.dart';
-import 'package:api_products/create_product_screen.dart';
+import 'package:api_products/views/ProductDetailScreen.dart';
+import 'package:api_products/views/create_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:api_products/models/Product_model.dart';
 import 'package:api_products/models/UserModel.dart';
-import 'package:api_products/api_service_profile.dart';
 import 'package:api_products/views/profile/profile_screen.dart';
+
+import '../Services/api_service_profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -130,8 +131,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('${user!.firstName} ${user!.lastName}',
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                        Text(user!.email, style: const TextStyle(fontSize: 14)),
+                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.black87)),
+                        Text(user!.email, style: const TextStyle(fontSize: 14,color: Colors.black87)),
                       ],
                     ),
                   ],
@@ -144,12 +145,14 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             child: TextField(
               controller: searchController,
+              cursorColor: Colors.black87,
+              style:const TextStyle(color: Colors.black87,),
               decoration: InputDecoration(
                 hintText: 'Search products...',
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
               ),
-              onSubmitted: (query) {
+              onChanged: (query) {
                 setState(() {
                   searchQuery = query;
                 });
@@ -174,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ]
                         .map((label) => DropdownMenuItem(
                       value: label,
-                      child: Text(label),
+                      child: Text(label,style: const TextStyle(color: Colors.black87),),
                     ))
                         .toList(),
                     onChanged: (value) {
@@ -195,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     items: categories
                         .map((cat) => DropdownMenuItem(
                       value: cat,
-                      child: Text(cat),
+                      child: Text(cat,style: const TextStyle(color: Colors.black87),),
                     ))
                         .toList(),
                     onChanged: (value) {
